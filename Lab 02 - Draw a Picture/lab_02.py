@@ -4,7 +4,7 @@ import arcade
 arcade.open_window(600, 600, "Lab 02")
 
 # Set background color
-arcade.set_background_color(arcade.color_from_hex_string("#79D2FF"))
+arcade.set_background_color(arcade.color_from_hex_string("#79D2EF"))
 
 # Get ready to draw
 arcade.start_render()
