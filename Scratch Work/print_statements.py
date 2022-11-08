@@ -1,6 +1,6 @@
-print("It was a dark and stormy night.")
-print("Suddenly a shot rang out!")
-print("Hi, this is a double quote mark: \". We use it for printing.")
-print("""Hello, This is my
-story, game, life,
-sex, fun, work.""")
+print("Hello World")
+print("Another Line")
+print("""Hmm, Okay
+Cool
+Yeah""")
+print("This is line 1\nThis is line 2\nThis is line 3\n")
