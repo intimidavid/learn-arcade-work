@@ -35,21 +35,29 @@ def draw_ground():
     return ground
 
 
-def main():
-    """Run the main program"""
-
-    # Create window, set background color, and start rendering
-    arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Drawing with Functions")
-    arcade.set_background_color(arcade.color.DARK_BLUE)
+def on_draw(delta_time):
+    """ Draw everything """
     arcade.start_render()
 
-    # Draw ground
     draw_ground()
+    draw_snowman(on_draw.snowman1_x, 10)
+    draw_snowman(220, 30)
 
-    draw_snowman(30, 50)
+    # Add one to the x value, making the snow person move right
+    # Negative numbers move left. Larger numbers move faster.
+    on_draw.snowman1_x += 0.25
 
-    #  Finish and run
-    arcade.finish_render()
+
+# Create a value that our on_draw.snow_person1_x will start at.
+on_draw.snowman1_x = 25
+
+
+def main():
+    arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Drawing with Functions")
+    arcade.set_background_color(arcade.color.DARK_BLUE)
+
+    # Call on_draw every 60th of a second.
+    arcade.schedule(on_draw, 1/60)
     arcade.run()
 
 
