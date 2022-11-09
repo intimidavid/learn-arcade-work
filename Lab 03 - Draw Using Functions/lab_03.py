@@ -16,6 +16,19 @@ def draw_eye(center_x, center_y, radius):
     return eye
 
 
+def draw_snowman(x, y):
+    """Draw a snow person"""
+
+    # Snow
+    draw_snowball(300 + x, 200 + y, 60)
+    draw_snowball(300 + x, 280 + y, 50)
+    draw_snowball(300 + x, 340 + y, 40)
+
+    # Eyes
+    draw_eye(285 + x, 350 + y, 5)
+    draw_eye(315 + x, 350 + y, 5)
+
+
 def draw_ground():
     """Draw the ground"""
     ground = arcade.draw_lrtb_rectangle_filled(0, SCREEN_WIDTH, SCREEN_HEIGHT / 3, 0, arcade.color.AIR_SUPERIORITY_BLUE)
@@ -33,16 +46,7 @@ def main():
     # Draw ground
     draw_ground()
 
-    # Draw a snow person
-
-    # Snow
-    draw_snowball(300, 200, 60)
-    draw_snowball(300, 280, 50)
-    draw_snowball(300, 340, 40)
-
-    # Eyes
-    draw_eye(285, 350, 5)
-    draw_eye(315, 350, 5)
+    draw_snowman(30, 50)
 
     #  Finish and run
     arcade.finish_render()
