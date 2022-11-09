@@ -16,6 +16,12 @@ def draw_eye(center_x, center_y, radius):
     return eye
 
 
+def draw_ground():
+    """Draw the ground"""
+    ground = arcade.draw_lrtb_rectangle_filled(0, SCREEN_WIDTH, SCREEN_HEIGHT / 3, 0, arcade.color.AIR_SUPERIORITY_BLUE)
+    return ground
+
+
 def main():
     """Run the main program"""
 
@@ -24,8 +30,8 @@ def main():
     arcade.set_background_color(arcade.color.DARK_BLUE)
     arcade.start_render()
 
-    # Draw the ground
-    arcade.draw_lrtb_rectangle_filled(0, SCREEN_WIDTH, SCREEN_HEIGHT / 3, 0, arcade.color.AIR_SUPERIORITY_BLUE)
+    # Draw ground
+    draw_ground()
 
     # Draw a snow person
 
@@ -43,5 +49,5 @@ def main():
     arcade.run()
 
 
-if __name__ == "__main()__":
+if __name__ == "__main__":
     main()
