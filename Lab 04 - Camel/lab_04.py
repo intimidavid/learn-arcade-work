@@ -1,14 +1,5 @@
 import random
 
-# Escape the Wampa!
-
-print("""
-Welcome to Escape the Wampa!
-
-You have stolen a tauntaun and are making your way across Hoth to Echo Base.
-A wampa is chasing you! It wants its dinner back and to eat you, too.
-Survive the icy trek and outrun the wampa.""")
-
 QUIT_COMMANDS = ["q", "quit", "Q", "q.", "QUIT"]
 DRINK_COMMANDS = ["a", "drink", "A", "a.", "DRINK", "drink from canteen"]
 MOD_SPEED_COMMANDS = ["b", "ahead moderate", "B", "b.", "moderate", "ahead moderate speed", "moderate speed"]
@@ -18,11 +9,20 @@ STATUS_COMMANDS = ["e", "status", "E", "e.", "STATUS", "status check", "check", 
 
 
 def give_choices():
-    miles_to_base = random.randrange(90, 126)
+    # Escape the Wampa!
+
+    print("""
+    Welcome to Escape the Wampa!
+
+    You have stolen a tauntaun and are making your way across Hoth to Echo Base.
+    A wampa is chasing you! It wants its dinner back and to eat you, too.
+    Survive the icy trek and outrun the wampa.""")
+
+    miles_to_base = random.randrange(105, 201)
     miles_travelled = 0
-    canteen_sips = 6
+    canteen_sips = 4
     energy = 10
-    wampa_distance = random.randrange(10, 16)
+    wampa_distance = random.randrange(15, 20)
 
     response = ""
     while response not in QUIT_COMMANDS:
@@ -30,7 +30,7 @@ def give_choices():
         A. Drink from your canteen.
         B. Ahead moderate speed.
         C. Ahead full speed.
-        D. Stop and rest.
+        D. Stop for the night.
         E. Status check.
         Q. Quit.
         """)
@@ -42,7 +42,7 @@ def give_choices():
                 print("You drink from your canteen.")
                 canteen_sips -= 1
                 energy += random.randint(1, 3)
-                wampa_distance -= 1
+                wampa_distance -= 0.5
             else:
                 print("You're out of water!")
 
@@ -53,7 +53,7 @@ def give_choices():
             miles_to_base -= moderate_speed
             energy -= 1
             wampa_distance -= wampa_run
-            wampa_distance += 1
+            wampa_distance += 1.5
             print(f"You travel {moderate_speed} miles.")
 
         elif response in FULL_SPEED_COMMANDS:
@@ -67,8 +67,9 @@ def give_choices():
             print(f"You travel {full_speed} miles.")
 
         elif response in REST_COMMANDS:
-            wampa_run = random.randrange(5, 10)
+            wampa_run = random.randrange(3, 8)
             wampa_distance -= wampa_run
+            wampa_distance -= 2
             energy += random.randint(5, 7)
 
         elif response in STATUS_COMMANDS:
@@ -102,8 +103,15 @@ def give_choices():
 
 
 def main():
-    give_choices()
-    print("Game Over.")
+    done = False
+    while not done:
+        quit_game = input("Do you want to play Escape the Wampa? Type y or n. ")
+        if quit_game == "n":
+            done = True
+        if not done:
+            give_choices()
+            print("Game Over.")
 
 
-main()
+if __name__ == "__main__":
+    main()
